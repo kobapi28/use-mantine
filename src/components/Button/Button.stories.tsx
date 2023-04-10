@@ -14,3 +14,7 @@ type Story = StoryObj<typeof Button>
 export const Primary: Story = {
   render: () => <Button/>
 }
+
+export const Secondary: Story = {
+  render: () => <Button size='s' variant='secondary' />
+}
