@@ -1,7 +1,7 @@
 import { Button as MantineButton, createStyles, rem } from '@mantine/core'
 import { type ButtonHTMLAttributes } from 'react'
 
-type Props = ButtonHTMLAttributes<'button'> & {
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   /**
    * @default normal
    */
@@ -14,19 +14,23 @@ type Props = ButtonHTMLAttributes<'button'> & {
 
 const useStyles = createStyles(() => ({
   button: {
-    root: {
-      height: rem(40),
-      color: 'green',
-      backgroundColor: 'white'
+    color: 'white',
+    ':hover': {
+      backgroundColor: 'black'
     }
   }
 }))
 
 export const Button = (props: Props) => {
-  // const { variant = 'normal', size = 'm' } = props
+  const { variant = 'normal', size = 'm' } = props
 
-  const { classes, cx } = useStyles()
+  const { classes } = useStyles()
   return (
-    <MantineButton className={cx(classes)}>button</MantineButton>
+    <MantineButton styles={() => ({
+      root: {
+        backgroundColor: variant === 'danger' ? 'red' : 'green',
+        height: size === 's' ? rem(20) : rem(40)
+      }
+    })} className={classes.button}>button</MantineButton>
   )
 }

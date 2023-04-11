@@ -18,3 +18,7 @@ export const Primary: Story = {
 export const Secondary: Story = {
   render: () => <Button size='s' variant='secondary' />
 }
+
+export const Danger: Story = {
+  render: () => <Button variant='danger' />
+}
